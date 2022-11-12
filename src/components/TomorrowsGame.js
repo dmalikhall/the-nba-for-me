@@ -1,23 +1,22 @@
 import React from 'react';
-// import { fetchData, liveOptions } from '../api/fetchLiveGames';
 import { Card, Typography, Stack, Grid, Container, Box } from '@mui/material';
-import { useGlobalContext } from '../helper/context';
+import { useGlobalContext } from '../helper/tomorrowsContext';
 
-const SingleGame = () => {
-  const { allLiveGames } = useGlobalContext();
+const TomorrowsGame = () => {
+  const { tomorrowsGames } = useGlobalContext();
   return (
     <Container>
       <Grid container spacing={2}>
 
 
-        {allLiveGames.map((game) => {
+        {tomorrowsGames.map((game) => {
           // console.log(game);
           const { id, date } = game;
           const { home, visitors } = game.teams
 
           const gameTime = new Date(date.start);
           // const month = gameTime.getMonth();
-          const day = gameTime.getDay();
+         
 
 
 
@@ -64,7 +63,7 @@ const SingleGame = () => {
                 <Stack direction='row' alignItems='center' justifyContent='space-between'>
                   <Box sx={{ width: '75%' }}>
                     <Stack direction='row' alignItems='center' padding='8px'>
-                      <img src={home.logo} alt={home.name} height='40px' width='40px' />
+                      <img src={home.logo} alt={home.name} height='40px' width='40px'/>
                       <Typography variant='p' marginLeft='9px'>{home.name}</Typography>
 
                     </Stack>
@@ -74,7 +73,7 @@ const SingleGame = () => {
                     </Stack>
                   </Box >
                   <Box borderLeft='1px solid black' textAlign='center' padding='12px' sx={{ width: 1 / 4 }}>
-                    <Typography>Today</Typography>
+                    <Typography>Tomorrow</Typography>
                     <Typography>{realStartTime}</Typography>
                   </Box>
                 </Stack>
@@ -88,6 +87,4 @@ const SingleGame = () => {
   )
 }
 
-export default SingleGame
-
-
+export default TomorrowsGame
