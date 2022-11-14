@@ -8,8 +8,6 @@ const SingleGame = () => {
   return (
     <Container>
       <Grid container spacing={2}>
-
-
         {allLiveGames.map((game) => {
           // console.log(game);
           const { id, date } = game;
@@ -17,47 +15,12 @@ const SingleGame = () => {
 
           const gameTime = new Date(date.start);
           // const month = gameTime.getMonth();
-          const day = gameTime.getDay();
-
-
-
-
           const theDate = gameTime.getTime();
           const gameStart = new Date(theDate)
           const gameStartString = gameStart.toLocaleTimeString('en-US')
           const mainTime = gameStartString.slice(0, 4);
           const amOrPm = gameStartString.slice(7, gameStartString.length);
           const realStartTime = `${mainTime}${amOrPm}`
-
-          // const months = [
-          //   'Jan',
-          //   'Feb',
-          //   'March',
-          //   'April',
-          //   'May',
-          //   'June',
-          //   'July',
-          //   'Aug',
-          //   'Sept',
-          //   'Oct',
-          //   'Nov',
-          //   'Dec',
-          // ];
-
-          // const days = [
-          //   'Sun',
-          //   'Mon',
-          //   'Tues',
-          //   'Wed',
-          //   'Thurs',
-          //   'Fri',
-          //   'Sat',
-          // ];
-
-          // console.log(months[month]);
-          // console.log(days[day]);
-
-
           return (
             <Grid item xs={12} md={6} key={id} >
               <Card>
