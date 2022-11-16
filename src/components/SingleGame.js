@@ -52,6 +52,7 @@ const SingleGame = () => {
                       <Typography variant='p' marginLeft='9px'>{home.name}</Typography>
                       {status.clock && <Typography marginLeft='auto' marginTop='7px' marginRight='10px'>{homePoints.points}</Typography>}
                       {status.halftime && <Typography marginLeft='auto' marginRight='10px'>{homePoints.points}</Typography>}
+                      {status.long === 'Finished' && <Typography marginLeft='auto' marginRight='10px'>{homePoints.points}</Typography>}
 
                     </Stack>
                     <Stack direction='row' alignItems='center' padding='8px'>
@@ -59,11 +60,12 @@ const SingleGame = () => {
                       <Typography variant='p' marginLeft='9px'>{visitors.name}</Typography>
                       {status.clock && <Typography marginLeft='auto' marginRight='10px'>{visitorPoints.points}</Typography>}
                       {status.halftime && <Typography marginLeft='auto' marginRight='10px'>{visitorPoints.points}</Typography>}
+                      {status.long === 'Finished' && <Typography marginLeft='auto' marginRight='10px'>{visitorPoints.points}</Typography>}
 
                     </Stack>
                   </Box >
                   <Box borderLeft='1px solid black' textAlign='center' padding='12px' sx={{ width: 1 / 4 }}>
-                    {status.clock ?
+                    {/* {status.clock ?
                       <Box>
                         <Typography>Qtr {periods.current}</Typography>
                         {status.clock}
@@ -73,9 +75,25 @@ const SingleGame = () => {
                         <Typography>Today</Typography>
                         <Typography>{realStartTime}</Typography>
                       </Box>
-                      
+
+                    } */}
+
+                    {status.clock ?
+                      <Box>
+                        <Typography>Qtr {periods.current}</Typography>
+                        {status.clock}
+                      </Box>
+                      : status.halftime ? <Typography>Halftime</Typography>
+                        : periods.endOfPeriod ? <Typography>End of Qtr{periods.current}</Typography>
+                          : status.long === 'Finished' ? <Typography>End of Game</Typography>
+                            : <Box>
+                              <Typography>Today</Typography>
+                              <Typography>{realStartTime}</Typography>
+
+                            </Box>
+
                     }
-                    
+
 
 
 
