@@ -9,9 +9,30 @@ const SingleGame = () => {
     <Container>
       <Grid container spacing={2}>
         {allLiveGames.map((game) => {
-          // console.log(game);
-          const { id, date } = game;
-          const { home, visitors } = game.teams
+          console.log(game);
+          const { id, date, status, periods } = game;
+          const { home, visitors } = game.teams;
+          const { home: homePoints, visitors: visitorPoints } = game.scores;
+
+          // const showHalftime = () => {
+          //   if (status.halftime) {
+          //     `${<Typography>halftime</Typography>}`
+          //   }
+          // }
+
+          // const showTime = () => {
+          //   if (status.clock) {
+          //     <Box>
+          //       <Typography>Qtr {periods.current}</Typography>
+          //       {status.clock}
+          //     </Box>
+          //   } else {
+          //     <Box>
+          //       <Typography>Today</Typography>
+          //       <Typography>{realStartTime}</Typography>
+          //     </Box>
+          //   }
+          // }
 
           const gameTime = new Date(date.start);
           // const month = gameTime.getMonth();
@@ -29,16 +50,41 @@ const SingleGame = () => {
                     <Stack direction='row' alignItems='center' padding='8px'>
                       <img src={home.logo} alt={home.name} height='40px' width='40px' />
                       <Typography variant='p' marginLeft='9px'>{home.name}</Typography>
+                      {status.clock && <Typography marginLeft='auto' marginTop='7px' marginRight='10px'>{homePoints.points}</Typography>}
+                      {status.halftime && <Typography marginLeft='auto' marginRight='10px'>{homePoints.points}</Typography>}
 
                     </Stack>
                     <Stack direction='row' alignItems='center' padding='8px'>
                       <img src={visitors.logo} alt={visitors.name} height='40px' width='40px' />
                       <Typography variant='p' marginLeft='9px'>{visitors.name}</Typography>
+                      {status.clock && <Typography marginLeft='auto' marginRight='10px'>{visitorPoints.points}</Typography>}
+                      {status.halftime && <Typography marginLeft='auto' marginRight='10px'>{visitorPoints.points}</Typography>}
+
                     </Stack>
                   </Box >
                   <Box borderLeft='1px solid black' textAlign='center' padding='12px' sx={{ width: 1 / 4 }}>
-                    <Typography>Today</Typography>
-                    <Typography>{realStartTime}</Typography>
+                    {status.clock ?
+                      <Box>
+                        <Typography>Qtr {periods.current}</Typography>
+                        {status.clock}
+                      </Box>
+                      :
+                      <Box>
+                        <Typography>Today</Typography>
+                        <Typography>{realStartTime}</Typography>
+                      </Box>
+                      
+                    }
+                    
+
+
+
+                    {/* {status.halftime && <Typography>Halftime</Typography>} */}
+
+                    {/* {`${!periods.endOfPeriods ? 'Qtr' {periods.current} : 'nav-container'}`} */}
+                    {/* {!periods.endOfPeriods ? Qtr {periods.current}: <Typography>End of {periods.current}</Typography>} */}
+                    {/* <Typography>Today</Typography>
+                    <Typography>{realStartTime}</Typography> */}
                   </Box>
                 </Stack>
               </Card>
@@ -53,4 +99,4 @@ const SingleGame = () => {
 
 export default SingleGame
 
-
+// `{!periods.endOfPeriods ? Qtr {periods.current}: <Typography>End of {periods.current}}`
