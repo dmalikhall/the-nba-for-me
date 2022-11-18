@@ -3,7 +3,7 @@ import React from 'react';
 import { Card, Typography, Stack, Grid, Container, Box } from '@mui/material';
 import { useGlobalContext } from '../helper/context';
 
-const SingleGame = () => {
+const TodaysGame = () => {
   const { allLiveGames } = useGlobalContext();
   return (
     <Container>
@@ -115,6 +115,6 @@ const SingleGame = () => {
   )
 }
 
-export default SingleGame
+export default TodaysGame
 
 // `{!periods.endOfPeriods ? Qtr {periods.current}: <Typography>End of {periods.current}}`

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Box, Tab } from '@mui/material';
 import { TabPanel, TabContext, TabList } from '@mui/lab';
-import SingleGame from '../components/SingleGame';
+
 import YesterdayGame from '../components/YesterdayGame';
 import TomorrowsGame from '../components/TomorrowsGame'
+import TodaysGame from '../components/TodaysGame';
 
 
 
@@ -20,7 +21,7 @@ const HomePage = () => {
                     <Tab label="Tomorrow" value="2" />
                 </TabList>
             </Box>
-            <TabPanel value="0"><SingleGame /></TabPanel>
+            <TabPanel value="0"><TodaysGame /></TabPanel>
             <TabPanel value="1"><YesterdayGame /></TabPanel>
             <TabPanel value="2"><TomorrowsGame /></TabPanel>
         </TabContext>

@@ -1,14 +1,18 @@
-// import SingleGame from "./components/SingleGame";
-// import TomorrowsGame from "./components/TomorrowsGame";
-
-// import YesterdayGame from "./components/YesterdayGame";
 import HomePage from "./pages/HomePage";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import SingleGameStats from "./pages/SingleGameStats";
 
 
 function App() {
-  
+
   return (
-    <HomePage/>
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<HomePage/>}/>
+      <Route path='/:gameId' element={<SingleGameStats/>}/>
+    </Routes>
+
+    </BrowserRouter>
   );
 }
 
