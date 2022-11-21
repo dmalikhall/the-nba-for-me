@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Typography, Stack, Grid, Container, Box} from '@mui/material';
+import { Card, Typography, Stack, Grid, Container, Box } from '@mui/material';
 import { Link } from 'react-router-dom'
 import { useGlobalContext } from '../helper/yesterdayContext';
 
@@ -10,7 +10,6 @@ const YesterdayGame = () => {
     <Container>
       <Grid container spacing={2}>
         {yesterdayGames.map((game) => {
-          console.log(game);
           const { id } = game;
           const { home, visitors } = game.teams;
           const { home: homePoints, visitors: visitorPoints } = game.scores
@@ -38,9 +37,7 @@ const YesterdayGame = () => {
               </Link>
             </Grid>
           )
-
         })}
-
       </Grid>
     </Container>
   )

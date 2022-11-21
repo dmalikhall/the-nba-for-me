@@ -41,8 +41,6 @@ export const AppProvider = ({ children }) => {
 
     const apiDate = `${todaysYear}-${gameMonth}-${todaysDate}`
 
-
-
     const fetchLiveData = async () => {
         try {
             const liveGameData = await fetchData(`https://api-nba-v1.p.rapidapi.com/games?season=2022&league=standard&date=${apiDate}`, liveOptions);
@@ -50,9 +48,7 @@ export const AppProvider = ({ children }) => {
 
         } catch (error) {
             console.log(error);
-
         }
-
     }
 
     useEffect(() => {
