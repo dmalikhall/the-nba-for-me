@@ -3,7 +3,9 @@ import { fetchData, liveOptions } from '../api/fetchLiveGames';
 import tomorrowsReducer from '../reducers/tomorrowsReducer'
 
 const initialState = {
-    tomorrowsGames: []
+    tomorrowsGames: [],
+    games_loading: false,
+    games_error: false,
 }
 
 const TomorrowsContext = React.createContext();
@@ -38,12 +40,13 @@ export const TomorrowsProvider = ({ children }) => {
     const apiDate = `${tomorrowsYear}-${gameMonth}-${tomorrowsDate}`
 
     const tomorrowsData = async () => {
+        dispatch({type:'GET_GAMES_BEGIN'})
         try {
             const tomorrowsGameData = await fetchData(`https://api-nba-v1.p.rapidapi.com/games?season=2022&league=standard&date=${apiDate}`, liveOptions);
             dispatch({ type: 'GET_GAMES_SUCCESS', payload: tomorrowsGameData })
 
         } catch (error) {
-            console.log(error);
+            dispatch({type:'GET_GAMES_ERROR'})
 
         }
     }

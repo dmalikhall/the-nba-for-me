@@ -2,9 +2,34 @@ import React from 'react';
 // import { fetchData, liveOptions } from '../api/fetchLiveGames';
 import { Card, Typography, Stack, Grid, Container, Box } from '@mui/material';
 import { useGlobalContext } from '../helper/context';
+import Loading from '../components/Loading';
+import Error from '../components/Error';
 
 const TodaysGame = () => {
-  const { allLiveGames } = useGlobalContext();
+  const { allLiveGames, games_loading: loading, games_error: error } = useGlobalContext();
+
+  if (loading) {
+    return (
+      <Container>
+        <Grid container spacing={2}>
+          {allLiveGames.map((loadingGames) => {
+            const { id } = loadingGames
+            return (
+              <Grid item xs={12} md={6} key={id}>
+                <Loading />
+              </Grid>
+
+            )
+          })}
+
+        </Grid>
+      </Container>
+    )
+  }
+  if (error) {
+    return <Error />
+  }
+
   return (
     <Container>
       <Grid container spacing={2}>

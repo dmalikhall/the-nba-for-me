@@ -4,7 +4,9 @@ import yesterdayReducer from "../reducers/yesterdayReducer";
 
 
 const initialState = {
-    yesterdayGames: []
+    yesterdayGames: [],
+    games_loading: false,
+    games_error: false,
 }
 
 const YesterdayContext = React.createContext();
@@ -39,12 +41,13 @@ export const YesterdayProvider = ({ children }) => {
     const apiDate = `${yesterdayYear}-${gameMonth}-${yesterdayDate}`
 
     const yesterdayData = async () => {
+        dispatch({type:'GET_GAMES_BEGIN'})
         try {
             const yesterdayGameData = await fetchData(`https://api-nba-v1.p.rapidapi.com/games?season=2022&league=standard&date=${apiDate}`, liveOptions);
             dispatch({ type: 'GET_GAMES_SUCCESS', payload: yesterdayGameData })
 
         } catch (error) {
-            console.log(error);
+            dispatch({type:'GET_GAMES_ERROR'})
 
         }
     }
