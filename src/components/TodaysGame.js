@@ -26,9 +26,16 @@ const TodaysGame = () => {
       </Container>
     )
   }
+
   if (error) {
     return <Error />
+
+  } else if (allLiveGames === null) {
+    return (
+      <h2>No games today</h2>
+    )
   }
+
 
   return (
     <Container>

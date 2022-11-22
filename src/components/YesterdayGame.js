@@ -25,8 +25,14 @@ const YesterdayGame = () => {
       </Container>
     )
   }
+
   if (error) {
     return <Error />
+    
+  } else if (yesterdayGames === null) {
+    return (
+      <h2>No games yesterday</h2>
+    )
   }
   return (
     <Container>

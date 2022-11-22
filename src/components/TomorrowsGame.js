@@ -24,9 +24,16 @@ const TomorrowsGame = () => {
       </Container>
     )
   }
+
   if (error) {
     return <Error />
+    
+  } else if (tomorrowsGames === null) {
+    return (
+      <h2>No games tomorrow</h2>
+    )
   }
+
   return (
     <Container>
       <Grid container spacing={2}>
