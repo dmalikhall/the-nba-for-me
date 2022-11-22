@@ -54,7 +54,7 @@ export const TomorrowsProvider = ({ children }) => {
     useEffect(()=> {
         tomorrowsData()
 
-    },[apiDate])
+    }, [])
 
   
 

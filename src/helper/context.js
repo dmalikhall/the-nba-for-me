@@ -57,7 +57,7 @@ export const AppProvider = ({ children }) => {
     useEffect(() => {
         fetchLiveData()
 
-    },[apiDate])
+    }, [])
     return (
         <AppContext.Provider value={{ ...state }}>
             {children}

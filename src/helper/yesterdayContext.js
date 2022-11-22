@@ -55,7 +55,7 @@ export const YesterdayProvider = ({ children }) => {
     useEffect(() => {
         yesterdayData()
 
-    }, [apiDate])
+    }, [])
 
     return (
         <YesterdayContext.Provider value={{ ...state }}>
